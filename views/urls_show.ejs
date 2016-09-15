@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- Write EJS code here to display shortened links -->
+    <% include ./partials/_header.ejs %>
+<ul>
+  <h1><%= shortURL %></h1>
+
+  <form method = "POST" action="/urls/<%=shortURL%>?_method=PUT">
+    <input name="newURL">
+    <button type="submit">Update</button>
+  </form>
+
+
+</ul>
+
+</body>
+</html>

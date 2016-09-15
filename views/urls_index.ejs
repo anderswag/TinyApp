@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- Write EJS code here to display shortened links -->
+
+   <% include ./partials/_header.ejs %>
+<div style = "width:100%; height:100px;background-color: #627777">
+  <ul style = "margin:0 auto; text-align: center">
+    <% for(key in urls) { %>
+      <form method = "POST" action="/urls/<%=key%>?_method=DELETE">
+        <li style = "list-style:none; padding-top:10px;display: inline;"> <%= key + " : " + urls[key] %> </li>
+        <a href = "http://localhost:8080/urls/<%=key%>">Edit</a>
+        <button>Delete the key:<%=key%></button>
+      </form>
+    <%  } %>
+  </ul>
+</div>
+
+</body>
+</html>
