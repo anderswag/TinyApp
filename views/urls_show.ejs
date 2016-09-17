@@ -5,12 +5,10 @@
     <% include ./partials/_header.ejs %>
 <ul>
   <h1><%= long %></h1>
-
   <form method = "POST" action="/urls/<%=shortURL%>?_method=PUT">
     <input name="newURL">
     <button type="submit">Update</button>
   </form>
-
 
 </ul>
 

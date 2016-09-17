@@ -9,14 +9,6 @@ const urlDb = require('./modules/database');
 let app = express();
 const PORT = process.env.PORT || 8080;
 
-
-//database(MONGODB_URI);
-
-/*var urlDatabase = {
-  "b2xVn2": "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
-};*/
-
 //GENERATE
 
 function generateRandomString() {
@@ -28,15 +20,9 @@ function generateRandomString() {
   return char;
 }
 
-//Get long URL
-
-
-
-
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded());
 app.set("view engine", "ejs");
-
 
 //Routes --------------------------------------------Routes
 app.delete("/urls/:id", (req, res) => {
@@ -62,19 +48,12 @@ app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
 });
 
-
-
-
 app.get("/urls", (req, res) => {
   urlDb.getDB((err, results) =>{
       console.log('stuff' + results);
       res.render("urls_index", {all:results});
     });
 });
-
-/*urlDb.test();*/
-
-
 
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
@@ -119,7 +98,6 @@ app.get("/hello", (req, res) => {
   res.end("<html><body>Hello <b>World</b></body></html>\n");
 });
 
-
 //ERROR HANDLING
 app.get('*', function(req, res, next) {
   var err = new Error();
@@ -132,12 +110,8 @@ app.use(function(err, req, res, next) {
   if(err.status !== 404) {
     return next();
   }
-
   res.send(err.message || 'Do I even exist bro? I think therefore I am.');
 });
-
-
-
 
 
 // LISTENING ----------------------------------------------

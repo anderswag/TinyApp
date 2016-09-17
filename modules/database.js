@@ -7,10 +7,6 @@ function getLongURL(shortURL, cb) {
   MongoClient.connect(MONGODB_URI, (err, db) => {
 
     db.collection("urls").findOne({ shortURL }, (err, result) => {
-/*      if (err){
-        cb(err);
-        return;
-      }*/
       console.log(result);
       if(result != null){
         cb(null, result.longURL);
