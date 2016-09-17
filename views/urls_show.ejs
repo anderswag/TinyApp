@@ -4,7 +4,7 @@
     <!-- Write EJS code here to display shortened links -->
     <% include ./partials/_header.ejs %>
 <ul>
-  <h1><%= shortURL %></h1>
+  <h1><%= long %></h1>
 
   <form method = "POST" action="/urls/<%=shortURL%>?_method=PUT">
     <input name="newURL">

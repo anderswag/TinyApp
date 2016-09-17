@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+<style>
+.main-container{
+    display: block;
+    width: 40%;
+    height: 100%;
+    background-color: #FFEB3B;
+    margin: 0 auto;
+    border: solid #9C27B0 4px;
+    border-radius: 9px;
+}
+.forms{
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    font-family: sans-serif;
+    padding-top: 16px;
+}
+.short-long{
+    list-style: none;
+    font-size: 20px;
+}
+
+
+
+</style>
+
+
+
+
+</head>
 <body>
     <!-- Write EJS code here to display shortened links -->
 
    <% include ./partials/_header.ejs %>
-<div style = "width:100%; height:100px;background-color: #627777">
-  <ul style = "margin:0 auto; text-align: center">
-    <% for(key in urls) { %>
-      <form method = "POST" action="/urls/<%=key%>?_method=DELETE">
-        <li style = "list-style:none; padding-top:10px;display: inline;"> <%= key + " : " + urls[key] %> </li>
-        <a href = "http://localhost:8080/urls/<%=key%>">Edit</a>
-        <button>Delete the key:<%=key%></button>
+<div class = "main-container">
+  <ul>
+    <% all.forEach(function(url){ %>
+      <form method = "POST" action="/urls/<%=url.shortURL%>?_method=DELETE" class = "forms">
+        <li class = "short-long"> <%= url.shortURL + " : " + url.longURL %> </li>
+        <a href = "http://localhost:8080/urls/<%=url.shortURL%>">Edit</a>
+        <button>Delete the key: <%=url.shortURL%> </button>
       </form>
-    <%  } %>
+    <%  }) %>
   </ul>
 </div>
 
